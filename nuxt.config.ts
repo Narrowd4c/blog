@@ -6,16 +6,9 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
   ssr: false,
+  buildModules: ['@nuxtjs/tailwindcss'],
   tailwindcss: {
-    cssPath: '~/assets/css/tailwind.css',
-    configPath: 'tailwind.config',
-    exposeConfig: false,
-    exposeLevel: 2,
-    config: {},
-    injectPosition: 'first',
-    viewer: true,
-  },app: {
-    
-  },
+    jit: true,
+  }
 })
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen bg-red-600">
+  <div class="h-screen">
     <section
       style="
         --bgUrl: url(&quot;https://cw-image-resizer.cwg.tw/resize/uri/https%3A%2F%2Fstorage.googleapis.com%2Fcrossing-cms-cwg-tw%2Fckeditor%2F202007%2Fckeditor-5f0ff3cecda06.jpg/?format=webp&quot;);
@@ -55,8 +55,8 @@ section {
   transform: scale(1);
   &:hover {
     animation:
-      scale 0.7s linear infinite both alternate,
-      linear 0.5s linear infinite both;
+      scale 2s linear infinite both alternate,
+      linear 1s linear infinite both;
   }
 }
 

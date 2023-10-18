@@ -1,7 +1,6 @@
 <template>
   <header>
     <nav>
-      <p>{{ api + 'coco'}}</p>
       <NuxtLayout>
         <NuxtPage></NuxtPage>
       </NuxtLayout>
@@ -11,7 +10,7 @@
 <script setup>
 const api = ref(null)
 onMounted(async () => { 
-  let getRes = await $fetch('/api/api')
+  let getRes = await useFetch('/api/api')
   console.log(getRes.api)
   api.value = getRes.api
 })
