@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 // https://tailwindcss.nuxtjs.org/tailwind/config
 export default {
+  darkMode: "class",
   theme: {
     container: {
       center: true,
@@ -9,6 +10,9 @@ export default {
     extend: {
       height: {
         screen: "100dvh",
+      },
+      width: {
+        screen: "100dvw",
       },
     },
   },
@@ -27,4 +31,3 @@ export default {
     `./app.config.{js,ts}`,
   ],
 };
-

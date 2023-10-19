@@ -3,6 +3,8 @@
     html, body{
     width: 100vw;
     height: 100vh;
+    @apply dark:text-white;
+    @apply dark:bg-black;
     }
 }
 @tailwind components;
