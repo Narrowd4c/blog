@@ -6,9 +6,5 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
   ssr: false,
-  buildModules: ['@nuxtjs/tailwindcss'],
-  tailwindcss: {
-    jit: true,
-  }
 })
 
