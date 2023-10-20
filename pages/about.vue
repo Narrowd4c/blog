@@ -23,8 +23,8 @@
         >
       </li>
     </ul>
-    <div class="border w-full"></div>
-    <h3 class="mb-2 text-xl py-3">其他</h3>
+    <div class="w-full border"></div>
+    <h3 class="mb-2 py-3 text-xl">其他</h3>
     <ul class="space-y-4 ps-4">
       <li
         v-for="{ name, about, link } in other"
@@ -49,8 +49,8 @@
 let lists = ref(null);
 
 onMounted(async () => {
-  let list = await $fetch("/api/article");
-  lists.value = list;
+  let getLists = await $fetch("/api/link");
+  lists.value = getLists;
 });
 
 const program = computed(() => {
