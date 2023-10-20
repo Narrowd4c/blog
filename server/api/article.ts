@@ -1,34 +1,32 @@
-export default defineEventHandler(event => {
-    // const article = getRouterParam(event, 'article')
-    return [
-  {
-    name: "Nuxt.js",
-    about: "Vue.js 的全端框架",
-    link: "https://nuxt.com/",
-    type: "程式",
-  },
-  {
-    name: "Lepton AI",
-    about: "部署 AI 應用程式",
-    link: "https://www.lepton.ai/",
-    type: "程式",
-  },
-  {
-    name: "MapBox",
-    about: "線上地圖套件",
-    link: "https://www.mapbox.com/",
-    type: "程式",
-  },
-  {
-    name: "Podcast 不好意思請問一下",
-    about: "S2 EP71 最近看什麼｜我在巴勒斯坦家庭，跟一位母親的對話",
-    link: "https://player.soundon.fm/p/816df744-699d-4472-bc6c-450bfd1fd299/episodes/a9b2402e-9def-4e98-bff8-f1b3ac472db0",
-    type: "其他",
-  },
-  {
-    name: "",
-    about: "",
-    link: "",
-  },
-]
+export default defineEventHandler((event) => {
+  return [
+    {
+      id: 1,
+      type: "JavaScript",
+      article: "<h1>Coco</h1><p>P</p><p>P</p><pre>var a = 'a'  全域變數 b = 'b' // 全域屬性 \n像是物件中的 key console.log(window) 變數不可被刪除,\n  // delete a , delete b function fn (){var a = 'a2'b = 'b'}fn()console.log(a) // error console.log(b)</pre>",
+      title: '變數與作用域',
+      link:'',
+    },
+    {
+      id: 2,
+      type: "CSS",
+      title: "用 linear-gradient 實現彩色邊框",
+      article: "使用 linear-gradient 和 background:border-box 組合",
+      link: "https://codepen.io/narrowd4c/pen/GRPLLeg",
+    },
+    {
+      id: 3,
+      type: "TailwindCSS",
+    },
+    {
+      id: 5,
+      type: "CSS",
+      title: "COCo",
+      article: "okok",
+    },
+    {
+      id: 4,
+      type: "Vue",
+    },
+  ];
 });

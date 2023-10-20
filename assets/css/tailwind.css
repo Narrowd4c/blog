@@ -1,17 +1,62 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;800;900&family=Shadows+Into+Light&display=swap");
 
 @tailwind base;
 @layer base {
-    body{
-        @apply dark:text-white;
-        @apply dark:bg-black;
-        font-family: 'Noto Sans TC', sans-serif;
-    &>#__nuxt{
-        display: flex;
-        min-height: 100dvh;
-        flex-direction: column;
+  body {
+    @apply dark:text-white;
+    @apply dark:bg-gray-800;
+    font-family: "Noto Sans TC", sans-serif;
+    & > #__nuxt {
+      display: flex;
+      min-height: 100dvh;
+      flex-direction: column;
     }
-    }
+  }
+  :is(a, button):hover {
+    @apply text-blue-400;
+    @apply cursor-pointer;
+  }
 }
 @tailwind components;
+@layer components {
+  .wave {
+    background:
+      radial-gradient(
+          50px at 50% -23.5px,
+          #0000 99%,
+          rgba(28, 114, 235, 0.6) 100%
+        ) -10px 0px/80px 100% repeat-x,
+      radial-gradient(50px at 50% -23.5px, #0000 99%, rgb(28, 114, 235) 100%)
+        6px 1px/60px 100% repeat-x;
+    & > img {
+      animation:
+        position 40s ease-in-out infinite,
+        wave 2s ease-in-out infinite alternate;
+    }
+    @keyframes position {
+      0% {
+        left: -1vw;
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        left: calc(100% - 3vw);
+        opacity: 0;
+      }
+    }
+    @keyframes wave {
+      0% {
+        top: 14%;
+      }
+      100% {
+        top: 16.5%;
+      }
+    }
+  }
+}
 @tailwind utilities;
