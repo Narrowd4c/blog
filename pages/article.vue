@@ -28,14 +28,17 @@
 </template>
 
 <script setup>
-const lists = ref([]);
+const lists = shallowRef([]);
 let types = ref(null);
+
+const { $arraySet }  = useNuxtApp()
 
 onMounted(async () => {
   lists.value = await $fetch("/api/article");
-  types.value = Array.from(new Set(lists.value.map(({ type }) => type)));
+  types.value = $arraySet(lists.value.map(({ type }) => type))
 });
-const category = ref("CSS");
+
+const category = ref("JavaScript");
 
 function filterArticle(param) {
   category.value = param;
