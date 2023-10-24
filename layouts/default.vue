@@ -23,7 +23,7 @@
   </header>
   <slot />
   <footer class="wave relative mt-auto w-full py-10 dark:hidden">
-    <img src="/ship-svgrepo-com.svg" alt="" class="absolute w-[3vw]" />
+    <img src="/ship-svgrepo-com.svg" alt="" class="absolute w-10" />
   </footer>
 </template>
 <script setup>

@@ -6,11 +6,11 @@ export default defineNuxtModule({
     name: "nuxt-tailwind-typo",
   },
   setup(options, nuxt) {
-    nuxt.hook("tailwindcss:loadConfig", function (loadConfig) {
+    nuxt.hook("tailwindcss:resolvedConfig", function (Config) {
       // read: https://tailwindcss.nuxtjs.org/tailwind/editor-support
       addTemplate({
         filename: "tailwind.config.js",
-        getContents: () => `module.exports = ${JSON.stringify(loadConfig)}`,
+        getContents: () => `module.exports = ${JSON.stringify(Config)}`,
         write: true,
       });
     });
