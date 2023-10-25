@@ -4,7 +4,6 @@
   </NuxtLayout>
 </template>
 <script setup>
-const config = useRuntimeConfig()
 const url = useRequestURL()
 useHead({
   titleTemplate: (title) => title || "Nex's BLog",
@@ -26,6 +25,9 @@ useSeoMeta({
   ogDescription: 'This is my personal blog.',
   ogImage: url.href + 'catch.jpeg',
   ogUrl: url.href,
+  ogImageWidth: 800,
+  ogImageHeight: 450,
+  ogType: 'website',
 })
 </script>
 <style></style>
