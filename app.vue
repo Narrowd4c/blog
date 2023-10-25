@@ -4,6 +4,7 @@
   </NuxtLayout>
 </template>
 <script setup>
+const config = useRuntimeConfig()
 useHead({
   titleTemplate: (title) => title || "Nex's BLog",
   bodyAttrs: {
@@ -22,7 +23,7 @@ useSeoMeta({
   ogTitle: "Nex's Blog",
   description: 'This is my personal blog.',
   ogDescription: 'This is my personal blog.',
-  ogImage: 'https://nuxt-learn-mu.vercel.app/cat.jpeg',
+  ogImage: config.app.baseURL + 'catch.jpeg',
 })
 
 </script>
