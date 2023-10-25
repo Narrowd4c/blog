@@ -5,6 +5,7 @@
 </template>
 <script setup>
 const config = useRuntimeConfig()
+const url = useRequestURL()
 useHead({
   titleTemplate: (title) => title || "Nex's BLog",
   bodyAttrs: {
@@ -23,8 +24,8 @@ useSeoMeta({
   ogTitle: "Nex's Blog",
   description: 'This is my personal blog.',
   ogDescription: 'This is my personal blog.',
-  ogImage: config.app.baseURL + 'catch.jpeg',
+  ogImage: url.href + 'catch.jpeg',
+  ogUrl: url.href,
 })
-
 </script>
 <style></style>
