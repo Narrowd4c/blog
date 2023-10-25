@@ -23,11 +23,12 @@ useSeoMeta({
   ogTitle: "Nex's Blog",
   description: 'This is my personal blog.',
   ogDescription: 'This is my personal blog.',
-  ogImage: url.href + 'catch.jpeg',
+  ogImage: url.href + 'cat.jpeg',
   ogUrl: url.href,
   ogImageWidth: 800,
   ogImageHeight: 450,
   ogType: 'website',
 })
+
 </script>
 <style></style>
