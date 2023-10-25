@@ -1,32 +1,39 @@
 export default defineEventHandler((event) => {
   return [
     {
-      id: 1,
-      type: "JavaScript",
-      article: "<h1>Coco</h1><p>P</p><p>P</p><pre>var a = 'a'  全域變數 b = 'b' // 全域屬性 \n像是物件中的 key console.log(window) 變數不可被刪除,\n  // delete a , delete b function fn (){var a = 'a2'b = 'b'}fn()console.log(a) // error console.log(b)</pre>",
-      title: '變數與作用域',
-      link:'',
+      type: "Vue",
+      title: "響應式基礎 Ref & Reactive",
+      article: "",
+      link: "https://everlasting-hydrangea-e83.notion.site/ref-reactive-4b553ca8484948dc9f0c8069903d504c?pvs=4",
     },
     {
-      id: 2,
+      type: "JavaScript",
+      article: "",
+      title: "變數與作用域",
+      link: "https://everlasting-hydrangea-e83.notion.site/c228b1d53d7b4c689aa931b90126b4ba?pvs=4",
+    },
+    {
       type: "CSS",
-      title: "用 linear-gradient 實現彩色邊框",
-      article: "使用 linear-gradient 和 background:border-box 組合",
+      title: "用 linear-gradient 做動態邊框",
+      article: "",
       link: "https://codepen.io/narrowd4c/pen/GRPLLeg",
     },
     {
-      id: 3,
       type: "TailwindCSS",
+      title: "TailwindCSS Group",
+      link: "#",
     },
     {
-      id: 5,
       type: "CSS",
-      title: "COCo",
-      article: "okok",
+      title: "Scroll-snap 語法介紹",
+      article: "",
+      link: "#",
     },
     {
-      id: 4,
-      type: "Vue",
+      type: "JavaScript",
+      title: "JavaScript 型別",
+      article: "",
+      link: "https://everlasting-hydrangea-e83.notion.site/196669444fea4eb7b87aa22b52f564ba?pvs=4",
     },
   ];
 });

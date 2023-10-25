@@ -23,7 +23,7 @@ export default defineEventHandler((event) => {
       name: "Clip drop",
       about: "圖片處理:補齊內容, 移除文字...",
       link: "https://clipdrop.co/",
-      type:'其他'
+      type: "其他",
     },
   ];
 });

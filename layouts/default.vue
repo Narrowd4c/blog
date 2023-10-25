@@ -22,8 +22,11 @@
     </div>
   </header>
   <slot />
-  <footer class="wave relative mt-auto w-full py-10 dark:hidden">
-    <img src="/ship-svgrepo-com.svg" alt="" class="absolute w-10" />
+  <div class="mt-6 h-20 w-full" aria-hidden="true"></div>
+  <footer class="fixed bottom-0 mt-auto w-full dark:hidden">
+    <div class="wave relative py-10">
+      <img src="/ship-svgrepo-com.svg" alt="" class="absolute w-10" />
+    </div>
   </footer>
 </template>
 <script setup>
