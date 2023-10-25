@@ -17,5 +17,13 @@ useHead({
     },
   ],
 });
+useSeoMeta({
+  title: "Nex's Blog",
+  ogTitle: "Nex's Blog",
+  description: 'This is my personal blog.',
+  ogDescription: 'This is my personal blog.',
+  ogImage: '/cat.jpeg',
+})
+
 </script>
 <style></style>
