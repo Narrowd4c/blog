@@ -6,11 +6,7 @@
 <script setup>
 const url = useRequestURL();
 useHead({
-  titleTemplate: (title) => title || "Nex's BLog",
-  bodyAttrs: {
-    class: "",
-  },
-  script: [],
+  titleTemplate: (title) => title ? title : "Nex's BLog",
   link: [
     {
       rel: "icon",
