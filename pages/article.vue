@@ -4,7 +4,7 @@
       <li class="rounded-xl">
         <button
           @click="category = 'All'"
-          :class="{ 'text-blue-500': category === 'All' }"
+          :class="{ 'text-blue-500': category === 'All' , 'bg-white':category === 'All'}"
           class="font-semiblod rounded-xl border px-4 py-2 dark:hover:bg-white"
         >
           全部
@@ -13,7 +13,7 @@
       <li v-for="type in types" :key="type" class="rounded-xl">
         <button
           @click="filterArticle(type)"
-          :class="{ 'text-blue-500': type === category }"
+          :class="{ 'text-blue-500': type === category,'bg-white':category === type }"
           class="font-semiblod rounded-xl border px-4 py-2 dark:hover:bg-white"
         >
           {{ type }}
