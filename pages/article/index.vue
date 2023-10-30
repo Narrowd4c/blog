@@ -30,10 +30,9 @@
         <div class="rounded-sm border-b p-4">
           <h4 class="text-2xl">{{ title }}</h4>
           <h5 class="my-4">類別: {{ type }}</h5>
-          <a v-show="link" :href="link" target="_blank" class="text-blue-500"
-            >連結</a
+          <a :href="`${url}/${title}`" class="text-blue-500"
+            >{{ `${url}/${title}` }}</a
           >
-          <p>{{ article }}</p>
         </div>
       </li>
     </ul>
@@ -45,7 +44,7 @@ const lists = shallowRef([]);
 let types = ref(null);
 // plugins/arraySet.js
 const { $arraySet } = useNuxtApp();
-
+const url = ref(useRequestURL())
 onMounted(async () => {
   lists.value = await $fetch("/api/article");
   types.value = $arraySet(lists.value.map(({ type }) => type));
