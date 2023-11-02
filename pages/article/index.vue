@@ -31,7 +31,7 @@
           <h4 class="text-2xl">{{ title }}</h4>
           <h5 class="my-4">類別: {{ type }}</h5>
           <a :href="`${url}/${title}`" class="text-blue-500"
-            >{{ `${url}/${title}` }}</a
+            >連結</a
           >
         </div>
       </li>
