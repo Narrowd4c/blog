@@ -1,13 +1,13 @@
 <template>
-  <div class="container my-10 flex items-center lg:w-3/4">
-    <div class="w-1/2">
+  <div class="container my-10 items-center md:flex lg:w-3/4">
+    <div class="md:w-1/2">
       <section class="mb-6 me-6">
         <h1 class="mb-6 text-3xl font-bold">關於:</h1>
         <p>
           正在轉職路上的工程師，架這個網站的目的是為了嘗試看看 Nuxt.js
           和訓練自己寫文章的能力。
         </p>
-        
+
         <div class="flex gap-x-2">
           <a href="https://github.com/Narrowd4c" target="_blank" rel="noopener"
             ><img
@@ -26,13 +26,10 @@
           /></a>
         </div>
       </section>
-      
     </div>
 
-    <img src="/cat.jpeg" alt="cat" class="w-1/2 object-contain" />
+    <img src="/cat.jpeg" alt="cat" class="w-2/3 object-contain md:w-1/2" />
   </div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>

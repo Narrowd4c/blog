@@ -1,11 +1,11 @@
 <template>
   <div class="container my-10 gap-x-20 lg:flex lg:w-3/4">
-    <div class="lg:w-1/2">
+    <section class="lg:w-1/2">
       <h2 class="mb-6 text-3xl font-bold">近期文章:</h2>
       <ul>
         <li v-for="{ type, title, link } in articles.slice(0, 4)">
           <div class="border-b py-4">
-            <h3 class="mb-2 text-2xl">{{ title }}</h3>
+            <h3 class="mb-2 text-xl md:text-2xl">{{ title }}</h3>
             <p class="mb-1">類別: {{ type }}</p>
             <a
               v-show="link"
@@ -16,46 +16,41 @@
           </div>
         </li>
       </ul>
-    </div>
-    <div class="mt-10 lg:mt-0 lg:w-1/2">
-      <section>
-        <h2 class="mb-6 text-3xl font-bold">最近正在看:</h2>
-        <h3 class="mb-2 text-xl">程式</h3>
-        <ul class="mb-2 space-y-4 ps-4">
-          <li
-            v-for="{ name, about, link } in program"
-            :key="name"
-            class="group flex w-fit items-center"
+    </section>
+    <section class="mt-10 lg:mt-0 lg:w-1/2">
+      <h2 class="mb-6 text-3xl font-bold">最近正在看:</h2>
+      <h3 class="mb-2 text-xl">程式</h3>
+      <ul class="mb-2 space-y-4 md:ps-4">
+        <li
+          v-for="{ name, about, link } in program"
+          :key="name"
+          class="group flex w-fit items-center"
+        >
+          <RightArrow
+            class="me-2 w-4 group-hover:animate-pulse dark:fill-white"
+          /><a class="flex items-center" :href="link" target="_blank"
+            ><p class="me-1 text-blue-500 md:text-xl">{{ name }}</p>
+            <span class="text-black">- {{ about }}</span></a
           >
-            <RightArrow
-              class="me-2 w-4 group-hover:animate-pulse dark:fill-white"
-            /><a
-              class="flex items-center"
-              :href="link"
-              target="_blank"
-              ><p class="me-1 text-xl text-blue-500">{{ name }}</p>
-              <span class="text-black">- {{ about }}</span></a
-            >
-          </li>
-        </ul>
-        <h3 class="mb-2 text-xl">其他</h3>
-        <ul class="space-y-4 ps-4">
-          <li
-            v-for="{ name, about, link } in other"
-            :key="name"
-            class="group flex w-fit items-center"
+        </li>
+      </ul>
+      <h3 class="mb-2 text-xl">其他</h3>
+      <ul class="space-y-4 md:ps-4">
+        <li
+          v-for="{ name, about, link } in other"
+          :key="name"
+          class="group flex w-fit items-center"
+        >
+          <RightArrow
+            class="me-2 w-4 group-hover:animate-pulse dark:fill-white"
+          />
+          <a class="flex items-center" :href="link" target="_blank"
+            ><p class="me-1 text-blue-500 md:text-xl">{{ name }}</p>
+            <span class="text-black">- {{ about }}</span></a
           >
-            <RightArrow
-              class="me-2 w-4 group-hover:animate-pulse dark:fill-white"
-            />
-            <a class="flex items-center" :href="link" target="_blank"
-              ><p class="me-1 text-xl text-blue-500">{{ name }}</p>
-              <span class="text-black">- {{ about }}</span></a
-            >
-          </li>
-        </ul>
-      </section>
-    </div>
+        </li>
+      </ul>
+    </section>
   </div>
 </template>
 

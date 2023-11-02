@@ -4,7 +4,7 @@ export default defineEventHandler((event) => {
       type: "Vue",
       title: "響應式基礎 Ref & Reactive",
       link: "https://everlasting-hydrangea-e83.notion.site/ref-reactive-4b553ca8484948dc9f0c8069903d504c?pvs=4",
-      article:`<article id="4b553ca8-4849-48dc-9f0c-8069903d504c" class="page sans"><header><h1 class="page-title">ref &amp; reactive</h1><p class="page-description"></p></header><div class="page-body"><p id="f18d8785-4867-4aab-b2ab-0e921c58e133" class="">ref 函式用於定義 vue 響應式狀態的值, 函式的參數接受任何型別並返回一個  ref 物件, 可透過 <code>.value</code> 使用響應式狀態的值</p><pre id="9dcffe89-e775-4b3d-a3f2-fe8b0eebed45" class="code"><code>import { ref } from &#x27;vue&#x27;
+      article: `<article id="4b553ca8-4849-48dc-9f0c-8069903d504c" class="page sans"><header><h1 class="page-title">ref &amp; reactive</h1><p class="page-description"></p></header><div class="page-body"><p id="f18d8785-4867-4aab-b2ab-0e921c58e133" class="">ref 函式用於定義 vue 響應式狀態的值, 函式的參數接受任何型別並返回一個  ref 物件, 可透過 <code>.value</code> 使用響應式狀態的值</p><pre id="9dcffe89-e775-4b3d-a3f2-fe8b0eebed45" class="code"><code>import { ref } from &#x27;vue&#x27;
 export default {
   setup() {
     const count = ref(0)
@@ -195,7 +195,7 @@ console.log(map.get(&#x27;count&#x27;).value)</code></pre></div></article><span 
       type: "JavaScript",
       title: "變數與作用域",
       link: "https://everlasting-hydrangea-e83.notion.site/c228b1d53d7b4c689aa931b90126b4ba?pvs=4",
-      article:`<article id="c228b1d5-3d7b-4c68-9aa9-31b90126b4ba" class="page sans"><header><p class="page-description"></p></header><div class="page-body"><hr id="f5f49bda-821e-492a-bf24-114b72d2a599"/><pre id="6bc51092-52b8-46a3-87ad-d5aad8b48c72" class="code code-wrap"><code>var a = &#x27;a&#x27; // 全域變數
+      article: `<article id="c228b1d5-3d7b-4c68-9aa9-31b90126b4ba" class="page sans"><header><p class="page-description"></p></header><div class="page-body"><hr id="f5f49bda-821e-492a-bf24-114b72d2a599"/><pre id="6bc51092-52b8-46a3-87ad-d5aad8b48c72" class="code code-wrap"><code>var a = &#x27;a&#x27; // 全域變數
 b = &#x27;b&#x27; // 全域屬性  像是物件中的 key
 console.log(window)
 
@@ -271,13 +271,13 @@ let result = val ?? &#x27;unknow&#x27;
       type: "CSS",
       title: "用 linear-gradient 做動態邊框",
       link: "https://codepen.io/narrowd4c/pen/GRPLLeg",
-      article:'',
+      article: "",
     },
     {
       type: "Nuxt",
       title: "Nuxt Seo 設定",
       link: "https://everlasting-hydrangea-e83.notion.site/SEO-and-Meta-336453dcd950470b91e87ddfd4f0b764?pvs=4",
-      article:`<article id="336453dc-d950-470b-91e8-7ddfd4f0b764" class="page sans"><header><h1 class="page-title">SEO and Meta</h1><p class="page-description"></p></header><div class="page-body"><ol type="1" id="c7c8af4b-163a-432f-bfac-4591561960f3" class="numbered-list" start="1"><li>在 nuxt.config.ts 定義</li></ol><pre id="440fc642-3913-46ca-aac7-1ff4b6c3c567" class="code"><code>// nuxt.config.ts
+      article: `<article id="336453dc-d950-470b-91e8-7ddfd4f0b764" class="page sans"><header><h1 class="page-title">SEO and Meta</h1><p class="page-description"></p></header><div class="page-body"><ol type="1" id="c7c8af4b-163a-432f-bfac-4591561960f3" class="numbered-list" start="1"><li>在 nuxt.config.ts 定義</li></ol><pre id="440fc642-3913-46ca-aac7-1ff4b6c3c567" class="code"><code>// nuxt.config.ts
 export default defineNuxtConfig({
 	// ssr:false, 如果使用 false 只會 seo 只會讀到 app.head 的內容
   app: {
@@ -407,13 +407,13 @@ useHead({
   meta: [{ property: &#x27;og:title&#x27;, content: 'App Name - $ {route.meta.title}' }]
 })
 &lt;/script&gt;</code></pre><p id="1a2b6c58-18fd-4ad3-8faa-56b069368d55" class="">
-</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>`
-      },
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>`,
+    },
     {
       type: "Vue",
       title: "Vue Router",
       link: "https://everlasting-hydrangea-e83.notion.site/196669444fea4eb7b87aa22b52f564ba?pvs=4",
-      article:`<article id="c8bc810c-db10-40e5-8154-89ec6cb27310" class="page sans"><header><h1 class="page-title">基礎範例</h1><p class="page-description"></p></header><div class="page-body"><p id="4f7c1f07-0984-4e32-b7cd-a7372759ba6b" class="">
+      article: `<article id="c8bc810c-db10-40e5-8154-89ec6cb27310" class="page sans"><header><h1 class="page-title">基礎範例</h1><p class="page-description"></p></header><div class="page-body"><p id="4f7c1f07-0984-4e32-b7cd-a7372759ba6b" class="">
 </p><pre id="0deef533-b69a-44f7-bcca-4d8a764caa2f" class="code"><code>import { RouterLink, RouterView } from &#x27;vue-router&#x27;
 &lt;router-link to=&quot;/&quot;&gt;Link&lt;/router-link&gt;  // router-link :to={name:&#x27;&#x27;, param:&#x27;&#x27;}
 &lt;router-view&gt;&lt;/router-view&gt;
