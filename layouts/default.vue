@@ -10,7 +10,7 @@
         <li><NuxtLink to="/article" class="px-2 py-4">分類</NuxtLink></li>
         <li><NuxtLink to="/about" class="px-2 py-4">關於</NuxtLink></li>
         <li>
-          <button @click="darkMode" class="ms-40">
+          <button @click="darkMode" class="ms-4">
             <img v-if="isDarkMode" src="/dark_mode.svg" alt="darkMode" /><img
               v-else="!isDarkMode"
               src="/light_mode.svg"

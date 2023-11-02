@@ -6,8 +6,8 @@
         <div class="border-b py-4">
           <h3 class="mb-2 text-2xl">{{ title }}</h3>
           <p class="mb-1">類別: {{ type }}</p>
-          <a v-show="link" :href="link" target="_blank" class="text-blue-500"
-            >連結</a
+          <a v-show="link" :href="`${url}/article/${title}`" class="text-blue-500"
+            >閱讀更多</a
           >
         </div>
       </li>
@@ -17,6 +17,7 @@
 
 <script setup>
 const articles = shallowRef([]);
+const url = ref(useRequestURL().href.slice(0, -1))
 
 onMounted(async () => {
   articles.value = await $fetch("/api/article");

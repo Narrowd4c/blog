@@ -2,6 +2,7 @@
   <div class="container">
     <div v-if="article" class="w-2/3 mx-auto px-4 my-10">
       <h1 class="text-3xl mb-4">{{ article.title }}</h1>
+      <a :href="article.link" target="_blank" v-if="!article.article">連結</a>
       <p v-html="article.article" class="[&_pre]:text-sm"></p>
     </div>
     <div v-else-if="showNotFound" class="w-1/2 mx-auto border">

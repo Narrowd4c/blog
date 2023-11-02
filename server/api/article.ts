@@ -367,19 +367,18 @@ bar.name <span class="hljs-comment">// "baz"</span>
       type: "CSS",
       title: "用 linear-gradient 做動態邊框",
       link: "https://codepen.io/narrowd4c/pen/GRPLLeg",
-      article:'A - 用 linear-gradient 做動態邊框',
+      article:'',
     },
     {
       type: "Nuxt",
       title: "Nuxt Seo 設定",
       link: "https://everlasting-hydrangea-e83.notion.site/SEO-and-Meta-336453dcd950470b91e87ddfd4f0b764?pvs=4",
-      article:'A-Nuxt Seo 設定',
-    },
+      },
     {
       type: "JavaScript",
       title: "JavaScript 型別",
       link: "https://everlasting-hydrangea-e83.notion.site/196669444fea4eb7b87aa22b52f564ba?pvs=4",
-      article:'A-JavaScript 型別',
+      article:'',
     },
   ];
 });
