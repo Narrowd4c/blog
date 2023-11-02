@@ -250,7 +250,118 @@ console.log(map.get('count').value)</code</pre>`,
       type: "JavaScript",
       title: "變數與作用域",
       link: "https://everlasting-hydrangea-e83.notion.site/c228b1d53d7b4c689aa931b90126b4ba?pvs=4",
-      article:'A - 變數與作用域',
+      article:`<h3 id="1-1-">1-1 變數宣告</h3>
+<pre><code class="lang-jsx"><span class="hljs-selector-tag">var</span> <span class="hljs-selector-tag">a</span> = <span class="hljs-string">'a'</span> <span class="hljs-comment">// 全域變數</span>
+<span class="hljs-selector-tag">b</span> = <span class="hljs-string">'b'</span> <span class="hljs-comment">// 全域屬性  像是物件中的 key</span>
+console.log(window)
+
+變數不可被刪除,  <span class="hljs-comment">// delete a , delete b</span>
+
+function fn (){
+    <span class="hljs-selector-tag">var</span> <span class="hljs-selector-tag">a</span> = <span class="hljs-string">'a2'</span>
+    <span class="hljs-selector-tag">b</span> = <span class="hljs-string">'b'</span>
+}
+<span class="hljs-function"><span class="hljs-title">fn</span><span class="hljs-params">()</span></span>
+console.log(a) <span class="hljs-comment">// error</span>
+console.log(b)
+</code></pre>
+<p>問題一 為何變數需要被宣告？
+避免重複命名導致資料污染</p>
+<p>問題二 變數與屬性差異為何？
+可以用 運算符 delete</p>
+<h3 id="1-2-">1-2 變數的語法作用域</h3>
+<p>問題一 var 宣告的變數作用域範圍？
+函式內.
+若函式內無宣告但有使用變數,會向外查找</p>
+<p>問題二 let const 作用域範圍？
+區塊作用域 <code>()&amp;{}</code> </p>
+<p>如: <code>if(), for(), {}, function(){}</code></p>
+<p>js 是靜態作用域(編譯時確定作用域)</p>
+<p>var 函式作用域 function(){}
+let const 區塊作用域 ()&amp;{}</p>
+<h3 id="1-3-hoisting">1-3 hoisting</h3>
+<p>問題一 什麼是提升？</p>
+<p>瀏覽器解析程式碼有兩個階段</p>
+<ol>
+<li>創造階段: 為變數準備記憶體 function fn(){} 先於 var</li>
+</ol>
+<pre><code><span class="hljs-selector-tag">var</span> <span class="hljs-selector-tag">a</span> = <span class="hljs-number">12</span>
+
+function a(){
+  console.log(<span class="hljs-string">'fn'</span>)
+}
+
+<span class="hljs-function"><span class="hljs-title">a</span><span class="hljs-params">()</span></span><span class="hljs-comment">//error</span>
+</code></pre><p>嘗試取值會回傳 undefined</p>
+<pre><code>console.log(b) <span class="hljs-comment">// undefined</span>
+<span class="hljs-selector-tag">var</span> <span class="hljs-selector-tag">b</span> = <span class="hljs-string">'b'</span>
+</code></pre><ol>
+<li>執行階段: 實際執行(變數賦值)</li>
+</ol>
+<p>函式
+陳述式 可 hoisting
+表達式 無 hoisting</p>
+<pre><code class="lang-jsx"><span class="hljs-comment">//覆蓋</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'fn1'</span>)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'fn2'</span>)
+}
+
+sum() <span class="hljs-comment">// fn2</span>
+
+<span class="hljs-comment">// 陳述式先被分配到記憶體</span>
+<span class="hljs-keyword">var</span> sum = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'expression'</span>)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sum</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'statment'</span>)
+}
+
+sum() <span class="hljs-comment">// experession</span>
+</code></pre>
+<p>預期函式統一至後方, 僅能使用陳述式無法使用表達式</p>
+<pre><code class="lang-jsx"><span class="hljs-selector-tag">var</span> <span class="hljs-selector-tag">b</span> = <span class="hljs-number">12</span>
+<span class="hljs-function"><span class="hljs-title">a</span><span class="hljs-params">()</span></span> <span class="hljs-comment">//error</span>
+<span class="hljs-selector-tag">var</span> <span class="hljs-selector-tag">a</span> = function (){
+  console.log(b)
+}
+</code></pre>
+<p>記憶體分配 在開發人員工具中可看到</p>
+<h3 id="1-4-undefined-null-is-not-defined">1-4 undefined &amp; null &amp; is not defined</h3>
+<p>宣告時會預設給予 undefined</p>
+<p>undefined 系統預設空值
+null 開發者賦予空值, (以前有值, 現在沒有)</p>
+<pre><code class="lang-jsx"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn1</span>(<span class="hljs-params"></span>)</span>{}
+<span class="hljs-keyword">let</span> f = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fn2</span>(<span class="hljs-params"></span>)</span>{}
+<span class="hljs-built_in">console</span>.log(f.name, fn1.name) <span class="hljs-comment">//fn2, fn1</span>
+
+<span class="hljs-keyword">var</span> bar = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">baz</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(bar === baz)
+}
+bar()
+bar.name <span class="hljs-comment">// "baz"</span>
+</code></pre>
+<ul>
+<li>可選串連 optional chaining operator</li>
+</ul>
+<p>如果是 <code>?.</code> 前是 undefined, null , 則回傳 undefined </p>
+<p>可用於 function 或是 object.prop</p>
+<pre><code class="lang-jsx"><span class="hljs-selector-tag">obj</span><span class="hljs-selector-class">.val</span>?<span class="hljs-selector-class">.prop</span>
+<span class="hljs-selector-tag">obj</span><span class="hljs-selector-class">.val</span>?.<span class="hljs-selector-attr">[expr]</span>
+<span class="hljs-selector-tag">obj</span><span class="hljs-selector-class">.func</span>?.(<span class="hljs-selector-tag">args</span>)
+</code></pre>
+<ul>
+<li>空值合並運算符（nullish coalescing operator）</li>
+</ul>
+<pre><code class="lang-jsx"><span class="hljs-keyword">let</span> <span class="hljs-keyword">val</span> = <span class="hljs-number">0</span>
+<span class="hljs-keyword">let</span> result = <span class="hljs-keyword">val</span> ?? 'unknow'
+<span class="hljs-comment">//result = (a !== null &amp;&amp; a !== undefined) ? a : b;</span>
+</code></pre>
+`,
     },
     {
       type: "CSS",
