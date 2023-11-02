@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;800;900&family=Shadows+Into+Light&display=swap");
-
 @tailwind base;
 @layer base {
   body {
     @apply dark:text-white;
     @apply dark:bg-gray-800;
     font-family: "Noto Sans TC", sans-serif;
+    @apply leading-normal;
     & > #__nuxt {
       display: flex;
       min-height: 100dvh;
@@ -59,4 +59,5 @@
     }
   }
 }
+
 @tailwind utilities;
