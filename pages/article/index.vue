@@ -1,5 +1,5 @@
 <template>
-  <div ref="mococo" class="container gap-x-6 pt-8 md:flex">
+  <div class="container gap-x-6 pt-8 md:flex">
     <ul
       class="-mx-4 flex flex-wrap gap-4 border-b bg-white px-6 py-4 dark:bg-gray-800 md:flex-col md:border-b-0 md:border-e lg:mx-0 lg:w-2/12"
     >

@@ -89,8 +89,7 @@ watchEffect(async () => {
   line-height: 1.5;
   padding: 0.125rem;
 }
-code {
-}
+
 p {
   margin: 1rem 0;
   line-height: 2;

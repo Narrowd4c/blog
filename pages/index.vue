@@ -28,9 +28,12 @@
         >
           <RightArrow
             class="me-2 w-4 group-hover:animate-pulse dark:fill-white"
-          /><a class="flex items-center" :href="link" target="_blank"
-            ><p class="me-1 text-blue-500 md:text-xl">{{ name }}</p>
-            <span class="text-black">- {{ about }}</span></a
+          /><a
+            class="flex items-center text-blue-500"
+            :href="link"
+            target="_blank"
+            ><p class="me-1 md:text-xl">{{ name }}</p>
+            <span>- {{ about }}</span></a
           >
         </li>
       </ul>
@@ -44,9 +47,12 @@
           <RightArrow
             class="me-2 w-4 group-hover:animate-pulse dark:fill-white"
           />
-          <a class="flex items-center" :href="link" target="_blank"
-            ><p class="me-1 text-blue-500 md:text-xl">{{ name }}</p>
-            <span class="text-black">- {{ about }}</span></a
+          <a
+            class="flex items-center text-blue-500"
+            :href="link"
+            target="_blank"
+            ><p class="me-1 md:text-xl">{{ name }}</p>
+            <span>- {{ about }}</span></a
           >
         </li>
       </ul>
