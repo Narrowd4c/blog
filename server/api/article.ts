@@ -744,5 +744,308 @@ const routes = [
   }
 ]</code></pre></details></li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>`,
     },
+    {
+      type: "Vue",
+      title: "Pinia",
+      link: "",
+      article:`<article id="e182803d-a7e6-4287-9246-1164692e2119" class="page sans"><header><div class="page-header-icon undefined"></header><div class="page-body"><p id="4125c74d-238d-49fe-9a9e-2d99266fcbcc" >
+</p><h1 id="f3ea380f-51d0-48f7-aae0-0daae3d3369c" class="">Store</h1><p id="b6a95575-5ac2-42e7-9f1a-ae473b35f70a" class="">Store (如 Pinia) 是一個保存狀態和業務邏輯的實體，它並不會與你的元件樹綁定。換句話說，它承載著全域狀態。它有點像一個永遠存在的元件，每個元件都可以讀取和寫入它。它有三個概念，state、getter 和 action，我們可以假設這些概念相當於元件中的 data、 computed 和 methods。</p><p id="afcd2221-6dab-47e5-a98f-257d70730316" class="">
+</p><ul id="a3147374-fa19-49e0-a13d-8de736448099" class="bulleted-list"><li style="list-style-type:disc">store 是一個用 reactive 包裝的對象</li></ul><h3 id="b9ddc4f3-8144-4c26-b2bd-258aa490dff7" class=""><strong><strong>Option Store</strong></strong></h3><p id="a75d01af-33db-4bbe-8570-b29c89412a78" class="">state → data</p><p id="ab68852e-652b-4455-b345-6c0fe68dad26" class="">getter → computed</p><p id="4a4a41de-006c-4fbb-839b-f95d86466854" class="">actions → methods</p><pre id="ad439533-63d7-4cd9-946d-d1da5e3b7784" class="code"><code>// stores/counter.js
+import { defineStore } from &#x27;pinia&#x27;
+
+// 命名  use...Store
+export const useCounterStore = defineStore(&#x27;counter&#x27;, {
+  state: () =&gt; ({ count: 0 }),
+  getters: {
+    double: (state) =&gt; state.count * 2,
+  },
+  actions: {
+    increment() {
+      this.count++
+    },
+  },
+})</code></pre><h3 id="9e4283eb-56f8-40c9-925e-c25e6590a397" class=""><strong><strong>Setup Store</strong></strong></h3><pre id="b2f43df4-34fb-46fa-8c36-ce0fa8966aa3" class="code"><code>// src/stores/counter.js
+
+import { ref, computed } from &#x27;vue&#x27;
+import { defineStore } from &#x27;pinia&#x27;
+
+export const useCounterStore = defineStore(&#x27;counter&#x27;, () =&gt; {
+  const count = ref(0)
+  const doubleCount = computed(() =&gt; count.value * 2)
+  function increment() {
+    count.value++
+  }
+
+  return { count, doubleCount, increment }
+})</code></pre><p id="673bb7e7-da25-4c33-9b88-4f6528692dfd" class="">Setup store 比 Option Store 帶來了更多的靈活性，因為你可以在一個 store 內建立偵聽器，並自由地使用任何組合式函數。不過，請記住，<mark class="highlight-red">使用組合式函數會讓 SSR 變得更複雜</mark>。</p><hr id="4d31bd82-17a5-4c1d-878d-9fb29dcf773e"/><h3 id="7cebbe75-649a-4fb4-9c5b-9cfdf5c60f74" class="">storeToRefs</h3><p id="61f01f9f-d18c-4bc2-bf43-08e798b0da5d" class="">直接對 useCounterStore <mark class="highlight-red">解構</mark>會導致的響應性失效 (僅 state, getter,   action 不會)</p><p id="459de23d-1d6c-4009-a925-b41d7c84db6d" class="">在其他元件操作 count 將不會更新到當前元件</p><pre id="6bdf58c1-4f88-4a0d-83d9-95181c283160" class="code"><code>const store = useCounterStore()
+
+// const {count, dobleCount } = store  -&gt; 不能直接解構
+const {count, dobleCount } = storeToRefs(store)
+
+const { increment } = store // action 可以直接解構</code></pre><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">State</summary><div class="indented"><p id="760a9273-baab-480c-9695-9ec0594bab9c" class="">state 通常被定義為一個返回初始狀態的函數</p><pre id="38901a5a-c20e-42fb-88e4-0200346aad44" class="code"><code>import { definedStore } from &#x27;pinia&#x27;
+
+const useStore = defineStore(&#x27;storeId&#x27;, {
+	state: () =&gt; {
+		return {
+			count: 0,
+			name: &#x27;&#x27;,
+			isAdmin:true,
+			items:[],
+			hasChanged:true,
+		}
+	}
+})</code></pre><h3 id="735ec56e-6eaa-414c-ad9b-aa9bc442dbe8" class="">TypeScript</h3><p id="de03e144-546c-4b3d-a010-05ac4909c47d" class="">在啟用 strict , 或至少 noImplicitThis,  Pinia 會自動推斷類型</p><ul id="5ccca5c5-fef0-497b-b5af-2f8d197cffbb" class="toggle"><li><details open=""><summary>interface 寫法</summary><pre id="53b5a12a-34d8-4df3-9d5e-32e293a806e1" class="code"><code>const useStore = defineStore(&#x27;storeId&#x27;, {
+  state: () =&gt; {
+    return {
+      // 用于初始化空列表
+      userList: [] as UserInfo[],
+      // 用于尚未加载的数据
+      user: null as UserInfo | null,
+    }
+  },
+})
+
+interface UserInfo {
+  name: string
+  age: number
+}</code></pre><pre id="c63145da-6b66-4bde-a33f-94b3a40bd742" class="code"><code>interface State {
+  userList: UserInfo[]
+  user: UserInfo | null
+}
+
+const useStore = defineStore(&#x27;storeId&#x27;, {
+  state: (): State =&gt; {
+    return {
+      userList: [],
+      user: null,
+    }
+  },
+})
+
+interface UserInfo {
+  name: string
+  age: number
+}</code></pre></details></li></ul><p id="0500d8e0-0d94-4126-8893-a5ce8ee8b76f" class="">訪問 state</p><p id="dadad917-4450-45b1-af9e-1e25124352b9" class="">可直接對其進行讀寫</p><pre id="fc5bddfe-cf16-4258-91e7-5c9efb4b642d" class="code"><code>const store = useStore()
+
+console.log(store.name)</code></pre><p id="c23cb958-9ad9-4c1f-8f62-099fa5dc806f" class="">不能直接解構使用,  需透過 storeToRefs(store)</p><p id="d893311b-2bb0-4405-877e-f91b9260b182" class="">
+</p><p id="9ad8683b-60cb-41b1-b0ac-1660ac2eb431" class="">重置 state</p><p id="9f8823d8-03b6-4041-897f-d3bba7a39608" class="">選項式 (Option Store) 可直接用 $reset() 方法重置為初始值</p><pre id="5252721d-fa7f-4312-95ed-cfe41d0df82b" class="code"><code>const store = useStore()
+
+store.$reset()</code></pre><p id="d03bf207-8b4c-4d6d-96d0-adfdfa79f167" class="">變更 state</p><pre id="da422f8a-2b1a-4896-9215-8ddef64de8c9" class="code"><code>const store = useStore()
+
+// 方法 1 
+store.count++
+
+// 方法 2 
+store.$patch({
+	count:store.count++
+	name:&#x27;DIO&#x27;,
+	age:&#x27;120&#x27;
+})
+
+// 方法 3 
+store.$patch((state)=&gt;{
+	state.items.push({name:&#x27;shoes&#x27;, quantity: 1})
+	state.hasChanged = true
+})</code></pre><p id="c04c822b-b6d4-411e-aec2-c8b6f429a68a" class="">替換 state</p><p id="865366c6-ef36-4816-89b6-b4909a532d10" class="">無法完全替換掉 store 的 state, </p><pre id="8277493b-fc68-4905-a77b-deb8a83dc6ca" class="code"><code>// 這其實並沒有取代 '$state'
+store.$state = { count: 24 }
+// 在它內部呼叫 '$patch()'：
+store.$patch({ count: 24 })</code></pre><p id="7a4f4c41-896a-4929-a1bd-e784a55f0857" class="">
+</p><p id="2fcf988e-6e18-4917-a5d7-d0bec6c0090b" class="">初始化 state</p><p id="677f05e3-ee8d-49ef-bfde-d1df019b6b12" class="">你也可以透過變更 pinia 實例的 state 來設定整個應用程式的初始 state。這常用於 SSR 中的啟動過程。</p><pre id="844940f3-5311-4ec6-b64b-8c06621bc083" class="code"><code>import devalue from &#x27;@nuxt/devalue&#x27;
+import { createPinia } from &#x27;pinia&#x27;
+// 检索服务端的 rootState
+const pinia = createPinia()
+const app = createApp(App)
+app.use(router)
+app.use(pinia)
+
+// 渲染页面后，rootState 被建立，
+// 可以直接在 'pinia.state.value'上读取。
+
+// 序列化，转义(如果 state 的内容可以被用户改变，这点就非常重要，几乎都是这样的)
+// 并将其放置在页面的某处
+// 例如，作为一个全局变量。
+devalue(pinia.state.value)</code></pre><p id="f3b91eee-bd03-44c1-9e23-8039950d0ddf" class=""><a href="https://juejin.cn/post/7091119489072234509">訂閱 state</a></p><p id="4ef63bb8-8c0e-48ff-a04b-84d155e4de64" class="">透過 <code>$subscribe()</code> 方法監聽 state 的變化, 比起普通的 <code>watch()</code>，使用 <code>$subscribe()</code> 的好处是 <em>subscriptions</em> 在 <em>patch</em> 後只觸發一次</p><pre id="95f93409-6abd-43b6-9cf6-e51803ff15a2" class="code"><code>counter.$subscribe((mutation, state) =&gt; {
+  // import { MutationType } from &#x27;pinia&#x27;
+  mutation.type // &#x27;direct&#x27; | &#x27;patch object&#x27; | &#x27;patch function&#x27;
+
+  // 和 counter.$id 一样
+  mutation.storeId // &#x27;counter&#x27;
+
+  // 只有 mutation.type === &#x27;patch object&#x27;的情况下才可用
+  mutation.payload // 传递给 counter.$patch() 的补丁对象。
+
+  // 每当状态发生变化时，将整个 state 持久化到本地存储。
+  localStorage.setItem(&#x27;counter&#x27;, JSON.stringify(state))
+})</code></pre><pre id="c11d5c0b-e6d5-42a4-87ff-25790e0afc67" class="code"><code>mutation.type -&gt; state 變更狀態的方式
+
+// direct
+conter.count++ 
+
+// patch object
+counter.$patch({count:12})
+
+// patch function
+counter.$patch((state)=&gt; {
+	state.count *= 2
+})</code></pre><p id="770aafa9-6a86-48d2-809a-c2d88a1b1604" class="">默认情况下，<em>state subscription</em> 会被绑定到添加它们的组件上 (如果 store 在组件的 <code>setup()</code> 里面)。这意味着，当该组件被卸载时，它们将被自动删除。如果你想在组件卸载后依旧保留它们，请将 <code>{ detached: true }</code> 作为第二个参数，以将 <em>state subscription</em> 从当前组件中<em>分离</em>：</p><pre id="1d174444-d812-4372-ab15-4934f3953d9d" class="code"><code>&lt;script setup&gt;
+const someStore = useSomeStore()
+// 此订阅器即便在组件卸载之后仍会被保留
+someStore.$subscribe(callback, { detached: true })
+&lt;/script&gt;</code></pre><p id="23ef6e21-bd65-4021-b10e-799ae1d8d8af" class="">在 <code><strong>pinia</strong></code> 实例上使用 <code><strong>watch()</strong></code> 函数侦听整个 state。</p><pre id="19f6400b-875a-426f-921f-a84465ade94a" class="code"><code>// main.ts
+const pinia = createPinia()
+watch(
+  pinia.state,
+  (state) =&gt; {
+    // 每当状态发生变化时，将整个 state 持久化到本地存储。
+     localStorage.setItem(&#x27;piniaState&#x27;, JSON.stringify(state))
+  },
+  { deep: true }
+)
+
+app.use(pinia)</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Getter</summary><div class="indented"><p id="96e9890a-117c-4903-862f-70c3d274b2f9" class="">getter 本身無法傳入參數，但可以透過回傳 func 的方式傳入參數</p><pre id="9dc8626f-390b-42ac-af0b-f017e52b508d" class="code"><code>export const useCounterStore = defineStore(&#x27;counter&#x27;, {
+  state: () =&gt; ({ count: 0 }),
+  getters: {
+    double(state){ return state.count * 2},
+    multiplied(state){ 
+			return (num) =&gt; num * state.count 
+		},
+  },
+  actions: {
+    increment() {
+      this.count++
+    },
+  },
+})
+---
+
+&lt;p @click=&quot;increment&quot;&gt; increment &lt;/p&gt;
+&lt;p&gt;{{ double }}&lt;/p&gt;
+&lt;p&gt;{{ multiplied(count) }}&lt;/p&gt;</code></pre><p id="d2a152dd-697d-48d5-8cbd-08c257b291a2" class="">請注意，當你這樣做時，getter 將不再被快取，它們只是一個被你呼叫的函數。不過，你可以在 getter 本身中快取一些結果，雖然這種做法並不常見，但有證明表明它的性能會更好：</p><pre id="e2151e72-418e-4c85-a1d0-fed112cfed07" class="code"><code>export const useStore = defineStore(&#x27;main&#x27;, {
+  getters: {
+    getActiveUserById(state) {
+      const activeUsers = state.users.filter((user) =&gt; user.active)
+      return (userId) =&gt; activeUsers.find((user) =&gt; user.id === userId)
+    },
+  },
+})</code></pre><p id="20912360-36ec-4a2a-8e52-f71f9cccff67" class="">訪問<strong><strong>其他 store 的 getter 直接 import 使用即可</strong></strong></p><pre id="6e70179b-830f-45cd-9ead-dcfb01248738" class="code"><code>import { useOtherStore } from &#x27;./other-store&#x27;
+
+export const useStore = defineStore(&#x27;main&#x27;, {
+  state: () =&gt; ({
+    // ...
+  }),
+  getters: {
+    otherGetter(state) {
+      const otherStore = useOtherStore()
+      return state.localData + otherStore.data
+    },
+  },
+})</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Aciton</summary><div class="indented"><p id="18387a7a-96bc-40a1-98e6-2686241a9cc8" class="">action 可以是異步</p><pre id="d50fa09c-1738-46ed-8bdb-1d5b1a41056c" class="code"><code>import { mande } from &#x27;mande&#x27;
+
+const api = mande(&#x27;/api/users&#x27;)
+
+export const useUsers = defineStore(&#x27;users&#x27;, {
+  state: () =&gt; ({
+    userData: null,
+    // ...
+  }),
+
+  actions: {
+    async registerUser(login, password) {
+      try {
+        this.userData = await api.post({ login, password })
+        showTooltip('Welcome back $ {this.userData.name}!')
+      } catch (error) {
+        showTooltip(error)
+        // 让表单组件显示错误
+        return error
+      }
+    },
+  },
+})</code></pre><p id="51dc18f6-8735-4f4e-9971-85e445787c10" class="">訪問<strong><strong>其他 store 的 action</strong></strong></p><pre id="4b77707d-c79e-443c-8cdf-e99b99b5ee8f" class="code"><code>import { useAuthStore } from &#x27;./auth-store&#x27;
+
+export const useSettingsStore = defineStore(&#x27;settings&#x27;, {
+  state: () =&gt; ({
+    preferences: null,
+    // ...
+  }),
+  actions: {
+    async fetchUserPreferences() {
+      const auth = useAuthStore()
+      if (auth.isAuthenticated) {
+        this.preferences = await fetchPreferences()
+      } else {
+        throw new Error(&#x27;User must be authenticated&#x27;)
+      }
+    },
+  },
+})</code></pre><p id="59be1613-fe1f-41c4-9230-c71079f27e3e" class="">訂閱<strong><strong> action</strong></strong></p><p id="90111c5d-64bc-4b49-82a8-69798a2e14b0" class="">通過 <code>store.$onAction()</code> 來監聽 action 和它們的結果。傳遞給它的回調函數會<mark class="highlight-red">在 action 本身之前執行。</mark></p><pre id="f7e66d5c-a0b5-4adb-bf49-6b53007be95b" class="code"><code>const unsubscribe = someStore.$onAction(
+  ({
+    name, // action 名称
+    store, // store 实例，类似 'someStore'
+    args, // 传递给 action 的参数数组
+    after, // 在 action 返回或解决后的钩子
+    onError, // action 抛出或拒绝的钩子
+  }) =&gt; {
+    // 为这个特定的 action 调用提供一个共享变量
+    const startTime = Date.now()
+    // 这将在执行 &quot;store &quot;的 action 之前触发。
+    console.log('Start &quot;$ {name}&quot; with params [$ {args.join(&#x27;, &#x27;)}].')
+
+    // 这将在 action 成功并完全运行后触发。
+    // 它等待着任何返回的 promise
+    after((result) =&gt; {
+      console.log(
+        'Finished &quot;$ {name}&quot; after $ {
+          Date.now() - startTime
+        }ms.\nResult: $ {result}.'
+      )
+    })
+
+    // 如果 action 抛出或返回一个拒绝的 promise，这将触发
+    onError((error) =&gt; {
+      console.warn(
+        'Failed &quot;$ {name}&quot; after $ {Date.now() - startTime}ms.\nError: $ {error}.'
+      )
+    })
+  }
+)
+
+// 手动删除监听器
+unsubscribe()</code></pre><p id="cbaf3b44-8d64-4baa-ba9f-ec721a526104" class="">默认情况下，<em>action 订阅器</em>会被绑定到添加它们的组件上(如果 store 在组件的 <code>setup()</code> 内)。这意味着，当该组件被卸载时，它们将被自动删除。如果你想在组件卸载后依旧保留它们，请将 <code>true</code> 作为第二个参数传递给 <em>action 订阅器</em>，以便将其从当前组件中分离：</p><pre id="e19365a3-5d36-48a2-b60e-ea34f3d0a17f" class="code"><code>&lt;script setup&gt;
+const someStore = useSomeStore()
+// 此订阅器即便在组件卸载之后仍会被保留
+someStore.$onAction(callback, true)
+&lt;/script&gt;</code></pre></div></details><details open=""><summary style="font-weight:600;font-size:1.875em;line-height:1.3;margin:0">Plugins</summary><div class="indented"><p id="acb7880b-f4c2-401f-ae76-faeba2c816fd" class=""><a href="https://juejin.cn/post/7086664050569904158">TypeScript</a> 透過 interface - <strong><strong>PiniaCustomProperties </strong></strong></p><pre id="c173f8f4-d034-41e7-993f-a857eca36560" class="code"><code>declare module &#x27;pinia&#x27; { 
+    interface PiniaCustomProperties&lt;Id, S, G, A&gt; { 
+        $globalStore: {
+            id: Id,
+            state?: () =&gt; S,
+            get?: G,
+            act?: A
+        },
+    }
+}
+
+// use(plugin: PiniaPlugin): Pinia;
+
+pinia.use(({store}) =&gt; { 
+    store.$globalStore = {
+        id: &#x27;globalStore&#x27;,
+        state: () =&gt; ({ state: &#x27;state&#x27; }),
+        get: {
+            getters: () =&gt; { return &#x27;getters&#x27; }
+        },
+        act: {
+            act() { 
+                console.log(&#x27;actions&#x27;)
+            }
+        }
+    }
+})
+
+const store = useSomeStoer()
+
+console.log(store.$global.id) // &#x27;globalStore&#x27;</code></pre></div></details></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>`
+    }
   ];
 });
