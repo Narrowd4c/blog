@@ -22,6 +22,7 @@
   "dependencies": {
     "@nuxt/http": "^0.6.4",
     "@pinia/nuxt": "^0.5.1",
+    "css-doodle": "^0.24.3",
     "pinia": "^2.1.7"
   }
 }
