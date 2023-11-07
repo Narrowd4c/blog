@@ -11,10 +11,8 @@
         <li><NuxtLink to="/about" class="px-2 py-4">關於</NuxtLink></li>
         <li>
           <button @click="darkMode" class="ms-4">
-            <img v-if="isDarkMode" src="/dark_mode.svg" alt="darkMode" /><img
-              v-else="!isDarkMode"
-              src="/light_mode.svg"
-              alt="lightMode"
+            <img v-show="isDarkMode.isDark" src="/dark_mode.svg" alt="darkMode" />
+            <img v-show="!isDarkMode.isDark" src="/light_mode.svg" alt="lightMode"
             />
           </button>
         </li>
@@ -30,13 +28,14 @@
   </footer>
 </template>
 <script setup>
-const isDarkMode = ref(false);
+const isDarkMode = useDarkModeStore();
 
 function darkMode() {
   const html = document.querySelector("html");
   html.classList.toggle("dark");
-  isDarkMode.value = html.classList.contains("dark");
+  isDarkMode.toggleDarkMode();
 }
+
 </script>
 
 <style scoped></style>
