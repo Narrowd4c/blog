@@ -34,7 +34,7 @@
         <div class="rounded-sm border-b p-4">
           <h4 class="text-2xl">{{ title }}</h4>
           <h5 class="my-4">類別: {{ type }}</h5>
-          <a :href="`${url}/${title}`" class="text-blue-500">連結</a>
+          <NuxtLink :to="{path:`/article/${title}`}" class="text-blue-500">連結</NuxtLink>
         </div>
       </li>
     </ul>
