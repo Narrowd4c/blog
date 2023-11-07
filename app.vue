@@ -5,8 +5,9 @@
 </template>
 <script setup>
 const url = useRequestURL();
+
 useHead({
-  titleTemplate: (title) => (title ? title : "Nex's BLog"),
+  titleTemplate: (title) => (title ? title : "Nex Blog"),
   link: [
     {
       rel: "icon",
@@ -16,7 +17,7 @@ useHead({
 });
 
 useSeoMeta({
-  ogTitle: "Nex's Blog",
+  ogTitle: "Nex Blog",
   description: "This is my personal blog.",
   ogDescription: "This is my personal blog.",
   ogImage: url.href + "cat.jpeg",
