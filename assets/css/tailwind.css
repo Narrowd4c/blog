@@ -25,18 +25,20 @@
           50px at 50% -23.5px,
           #0000 99%,
           rgba(28, 114, 235, 0.6) 100%
-        ) -10px 0px/80px 100% repeat-x,
+        ) 0px/76px 100% repeat-x,
       radial-gradient(50px at 50% -23.5px, #0000 99%, rgb(28, 114, 235) 100%)
-        6px 1px/60px 100% repeat-x;
+        6px 3px/45px 100% repeat-x;
+        animation:wave 80s ease-in-out infinite ;
     & > img {
       animation:
         position 40s ease-in-out infinite,
-        wave 2s ease-in-out infinite alternate;
+        wave2 2s ease-in-out infinite alternate;
     }
     @keyframes position {
       0% {
         left: -1vw;
         opacity: 0;
+        
       }
       10% {
         opacity: 1;
@@ -49,12 +51,23 @@
         opacity: 0;
       }
     }
-    @keyframes wave {
+    @keyframes wave2 {
       0% {
         top: 0px;
       }
       100% {
         top: 5px;
+      }
+    }
+    @keyframes wave {
+      0% {
+        background-position: 50% 0px, -49% 0px;
+      }
+      50%{
+        background-position: 25% 3px, 20% 0px;
+      }
+      100% {
+        background-position: -50% 0px, 49% 0px;
       }
     }
   }

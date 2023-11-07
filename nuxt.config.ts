@@ -6,6 +6,16 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: { baseURL: process.env.BASE_URL },
   },
+  vite: {
+    vue: {
+      template: {
+        compilerOptions: {
+          // 将所有带短横线的标签名都视为自定义元素
+          isCustomElement: (tag) => tag.includes('css-doodle')
+        }
+      }
+    },
+  },
   app: {
     head: {
       charset: "utf-8",
