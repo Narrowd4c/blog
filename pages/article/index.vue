@@ -45,12 +45,11 @@
 const lists = shallowRef([]);
 let types = ref(null);
 const category = ref("All");
-// plugins/arraySet.js
-const { $arraySet } = useNuxtApp();
-const url = ref(useRequestURL());
+const  arraySet  = useArraySet()
+
 onMounted(async () => {
   lists.value = await $fetch("/api/article");
-  types.value = $arraySet(lists.value.map(({ type }) => type));
+  types.value = arraySet(lists.value.map(({ type }) => type));
 });
 
 function filterArticle(param) {
