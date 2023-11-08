@@ -10,13 +10,13 @@ export default defineNuxtConfig({
     vue: {
       template: {
         compilerOptions: {
-          // 将所有带短横线的标签名都视为自定义元素
           isCustomElement: (tag) => tag.includes('css-doodle')
         }
       }
     },
   },
   app: {
+    baseURL:"/blog/",
     head: {
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
