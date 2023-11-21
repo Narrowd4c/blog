@@ -3,67 +3,113 @@
     <section class="lg:w-1/2">
       <h2 class="mb-6 text-3xl font-bold">近期文章:</h2>
       <ul>
-        <li v-for="{ type, title } in articles.slice(0, 4)">
-          <div class="border-b py-4">
-            <h3 class="mb-2 text-xl md:text-2xl">{{ title }}</h3>
-            <p class="mb-1">類別: {{ type }}</p>
-            <NuxtLink :to="{path:`/article/${title}`}" class="text-blue-500">閱讀更多</NuxtLink>
-          </div>
+        <li
+          v-for="{ type, title } in articles.slice(0, 7)"
+          :key="title"
+          class="border-b py-4"
+        >
+          <h3 class="mb-2 text-xl md:text-2xl">{{ title }}</h3>
+          <p class="mb-3">類別: {{ type }}</p>
+          <NuxtLink :to="{ path: `/article/${title}` }" class="text-blue-500"
+            >閱讀更多</NuxtLink
+          >
         </li>
       </ul>
     </section>
     <section class="mt-10 lg:mt-0 lg:w-1/2">
-      <h2 class="mb-6 text-3xl font-bold">最近正在看:</h2>
-      <h3 class="mb-2 text-xl">程式</h3>
-      <ul class="mb-2 space-y-4 md:ps-4">
-        <li
-          v-for="{ name, about, link } in program"
-          :key="name"
-          class="group flex w-fit items-center"
-        >
-          <RightArrow
-            class="me-2 w-4 group-hover:animate-pulse dark:fill-white"
-          /><a
-            class="flex items-center text-blue-500"
-            :href="link"
-            target="_blank"
-            ><p class="me-1 md:text-xl">{{ name }}</p>
-            <span>- {{ about }}</span></a
-          >
-        </li>
-      </ul>
-      <h3 class="mb-2 text-xl">其他</h3>
-      <ul class="space-y-4 md:ps-4">
-        <li
-          v-for="{ name, about, link } in other"
-          :key="name"
-          class="group flex w-fit items-center"
-        >
-          <RightArrow
-            class="me-2 w-4 group-hover:animate-pulse dark:fill-white"
-          />
+      <div class="my-6 border-b pb-4">
+        <img src="/cat.jpeg" alt="cat" class="mb-4 object-contain" />
+        <h1 class="mb-6 text-3xl font-bold">關於:</h1>
+        <p class="mb-4">
+          正在轉職路上的前端工程師，最近正在嘗試使用 Nuxt.js
+          和訓練寫文章的能力。
+        </p>
+        <div class="flex gap-x-2">
+          <a href="https://github.com/Narrowd4c" target="_blank" rel="noopener"
+            ><img
+              :src="
+                isDarkMode.isDark
+                  ? '/github-mark-white.svg'
+                  : '/github-mark.svg'
+              "
+              alt="github link"
+              class="h-6 w-6"
+          /></a>
           <a
-            class="flex items-center text-blue-500"
-            :href="link"
+            href="https://everlasting-hydrangea-e83.notion.site/2ebe5748ab40470cb53936a42feb876b?pvs=4"
             target="_blank"
-            ><p class="me-1 md:text-xl">{{ name }}</p>
-            <span>- {{ about }}</span></a
+            rel="noopener"
+            ><img
+              src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg"
+              alt="notion icon"
+              class="h-6 w-6"
+          /></a>
+        </div>
+      </div>
+      <div>
+        <h2 class="mb-6 text-3xl font-bold">最近正在看:</h2>
+        <h3 class="mb-2 text-xl">程式</h3>
+        <ul class="mb-2 space-y-4 md:ps-4">
+          <li
+            v-for="{ name, about, link } in program"
+            :key="name"
+            class="group flex w-fit items-center"
           >
-        </li>
-      </ul>
+            <RightArrow
+              class="me-2 w-4 group-hover:animate-pulse dark:fill-white"
+            /><a
+              class="flex items-center text-blue-500"
+              :href="link"
+              target="_blank"
+              ><p class="me-1 md:text-xl">{{ name }} - {{ about }}</p>
+            </a>
+          </li>
+        </ul>
+        <h3 class="mb-2 text-xl">其他</h3>
+        <ul class="space-y-4 md:ps-4">
+          <li
+            v-for="{ name, about, link } in other"
+            :key="name + about"
+            class="group flex w-fit items-center"
+          >
+            <RightArrow
+              class="me-2 w-4 group-hover:animate-pulse dark:fill-white"
+            />
+            <a
+              class="flex items-center text-blue-500"
+              :href="link"
+              target="_blank"
+              ><p class="me-1 md:text-xl">{{ name }} - {{ about }}</p>
+            </a>
+          </li>
+        </ul>
+      </div>
     </section>
   </div>
 </template>
 
 <script setup>
 import RightArrow from "../components/icon/RightArrow.vue";
-let lists = ref(null);
+let lists = ref();
 const articles = shallowRef([]);
-const url = ref(useRequestURL().href.slice(0, -1));
-
-onMounted(async () => {
-  articles.value = await $fetch("/api/article");
-  lists.value = await $fetch("/api/link");
+const isDarkMode = useDarkModeStore();
+watchEffect(async () => {
+  try {
+    const { data } = await useAsyncData("article", () =>
+      $fetch("/api/article"),
+    );
+    articles.value = data.value;
+  } catch (e) {
+    console.log(e);
+  }
+});
+watchEffect(async () => {
+  try {
+    const getList = await useFetch("/api/link");
+    lists.value = getList.data.value;
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 const program = computed(() => {

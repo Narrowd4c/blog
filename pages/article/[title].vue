@@ -27,7 +27,7 @@ watchEffect(async () => {
   }
 });
 </script>
-<style>
+<style scoped>
 .page-title {
   font-size: 1.5rem;
   font-weight: 700;
@@ -94,6 +94,7 @@ p {
   margin: 1rem 0;
   line-height: 2;
 }
+
 .table_of_contents-indent-1 {
   margin-left: 1.5rem;
 }

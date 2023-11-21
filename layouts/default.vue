@@ -8,7 +8,6 @@
       >
       <ul class="ms-auto flex">
         <li><NuxtLink to="/article" class="px-2 py-4">分類</NuxtLink></li>
-        <li><NuxtLink to="/about" class="px-2 py-4">關於</NuxtLink></li>
         <li>
           <button @click="darkMode" class="ms-4">
             <img v-show="isDarkMode.isDark" src="/dark_mode.svg" alt="darkMode" />
