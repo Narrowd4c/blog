@@ -8,7 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "formate": "npx prettier . --write"
+    "format": "npx prettier . --write"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",

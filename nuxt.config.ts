@@ -2,7 +2,7 @@
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ["@nuxtjs/tailwindcss",'@pinia/nuxt',],
+  modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
   runtimeConfig: {
     public: { baseURL: process.env.BASE_URL },
   },
@@ -10,9 +10,9 @@ export default defineNuxtConfig({
     vue: {
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag.includes('css-doodle')
-        }
-      }
+          isCustomElement: (tag) => tag.includes("css-doodle"),
+        },
+      },
     },
   },
   app: {

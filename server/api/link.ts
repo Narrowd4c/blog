@@ -8,9 +8,9 @@ export default defineEventHandler((event) => {
       type: "程式",
     },
     {
-      name: "Lepton AI",
-      about: "部署 AI 應用程式",
-      link: "https://www.lepton.ai/",
+      name: "CSS-Doodle",
+      about: "css 圖案套件",
+      link: "https://css-doodle.com/",
       type: "程式",
     },
     {

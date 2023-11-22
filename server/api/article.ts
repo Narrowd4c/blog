@@ -412,7 +412,7 @@ useHead({
     {
       type: "Vue",
       title: "Vue Router",
-      link: "https://everlasting-hydrangea-e83.notion.site/196669444fea4eb7b87aa22b52f564ba?pvs=4",
+      link: "https://everlasting-hydrangea-e83.notion.site/Vue-Router-c8bc810cdb1040e5815489ec6cb27310?pvs=4",
       article: `<article id="c8bc810c-db10-40e5-8154-89ec6cb27310" class="page sans"><header><h1 class="page-title">基礎範例</h1><p class="page-description"></p></header><div class="page-body"><p id="4f7c1f07-0984-4e32-b7cd-a7372759ba6b" class="">
 </p><pre id="0deef533-b69a-44f7-bcca-4d8a764caa2f" class="code"><code>import { RouterLink, RouterView } from &#x27;vue-router&#x27;
 &lt;router-link to=&quot;/&quot;&gt;Link&lt;/router-link&gt;  // router-link :to={name:&#x27;&#x27;, param:&#x27;&#x27;}
@@ -747,8 +747,8 @@ const routes = [
     {
       type: "Vue",
       title: "Pinia",
-      link: "",
-      article:`<article id="e182803d-a7e6-4287-9246-1164692e2119" class="page sans"><header><div class="page-header-icon undefined"></header><div class="page-body"><p id="4125c74d-238d-49fe-9a9e-2d99266fcbcc" >
+      link: "https://everlasting-hydrangea-e83.notion.site/Pinia-e182803da7e6428792461164692e2119?pvs=4",
+      article: `<article id="e182803d-a7e6-4287-9246-1164692e2119" class="page sans"><header><div class="page-header-icon undefined"></header><div class="page-body"><p id="4125c74d-238d-49fe-9a9e-2d99266fcbcc" >
 </p><h1 id="f3ea380f-51d0-48f7-aae0-0daae3d3369c" class="">Store</h1><p id="b6a95575-5ac2-42e7-9f1a-ae473b35f70a" class="">Store (如 Pinia) 是一個保存狀態和業務邏輯的實體，它並不會與你的元件樹綁定。換句話說，它承載著全域狀態。它有點像一個永遠存在的元件，每個元件都可以讀取和寫入它。它有三個概念，state、getter 和 action，我們可以假設這些概念相當於元件中的 data、 computed 和 methods。</p><p id="afcd2221-6dab-47e5-a98f-257d70730316" class="">
 </p><ul id="a3147374-fa19-49e0-a13d-8de736448099" class="bulleted-list"><li style="list-style-type:disc">store 是一個用 reactive 包裝的對象</li></ul><h3 id="b9ddc4f3-8144-4c26-b2bd-258aa490dff7" class=""><strong><strong>Option Store</strong></strong></h3><p id="a75d01af-33db-4bbe-8570-b29c89412a78" class="">state → data</p><p id="ab68852e-652b-4455-b345-6c0fe68dad26" class="">getter → computed</p><p id="4a4a41de-006c-4fbb-839b-f95d86466854" class="">actions → methods</p><pre id="ad439533-63d7-4cd9-946d-d1da5e3b7784" class="code"><code>// stores/counter.js
 import { defineStore } from &#x27;pinia&#x27;
@@ -1045,7 +1045,13 @@ pinia.use(({store}) =&gt; {
 
 const store = useSomeStoer()
 
-console.log(store.$global.id) // &#x27;globalStore&#x27;</code></pre></div></details></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>`
-    }
+console.log(store.$global.id) // &#x27;globalStore&#x27;</code></pre></div></details></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>`,
+    },
+    {
+      type: "Other",
+      title: "快速上手 Git",
+      link: "https://everlasting-hydrangea-e83.notion.site/Git-6d50bed9bfc54988a5c68729e0d515d8?pvs=4",
+      article: "",
+    },
   ];
 });
