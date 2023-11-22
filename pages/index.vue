@@ -10,9 +10,7 @@
         >
           <h3 class="mb-2 text-xl md:text-2xl">{{ title }}</h3>
           <p class="mb-3">類別: {{ type }}</p>
-          <a :href="link" target="_blank" class="text-blue-500"
-            >閱讀更多</a
-          >
+          <a :href="link" target="_blank" class="text-blue-500">閱讀更多</a>
         </li>
       </ul>
     </section>

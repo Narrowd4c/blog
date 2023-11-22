@@ -34,9 +34,7 @@
         <div class="rounded-sm border-b p-4">
           <h4 class="text-2xl">{{ title }}</h4>
           <h5 class="my-4">類別: {{ type }}</h5>
-          <a :href="link" target="_blank" class="text-blue-500"
-            >連結</a
-          >
+          <a :href="link" target="_blank" class="text-blue-500">連結</a>
         </div>
       </li>
     </ul>

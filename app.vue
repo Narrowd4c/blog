@@ -8,6 +8,9 @@ const url = useRequestURL();
 
 useHead({
   titleTemplate: (title) => (title ? title : "Nex Blog"),
+  htmlAttrs: {
+    lang: "zh-Hant-TW",
+  },
   link: [
     {
       rel: "icon",
