@@ -1046,6 +1046,12 @@ pinia.use(({store}) =&gt; {
 const store = useSomeStoer()
 
 console.log(store.$global.id) // &#x27;globalStore&#x27;</code></pre></div></details></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span>`
+    },
+    {
+      type: 'Other',
+      title: "快速上手 Git",
+      link:"",
+      article:``
     }
   ];
 });

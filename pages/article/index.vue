@@ -30,11 +30,13 @@
     </ul>
 
     <ul class="space-y-2 p-4 md:w-9/12">
-      <li v-for="{ title, type } in filterList" :key="title">
+      <li v-for="{ title, type, link } in filterList" :key="title">
         <div class="rounded-sm border-b p-4">
           <h4 class="text-2xl">{{ title }}</h4>
           <h5 class="my-4">類別: {{ type }}</h5>
-          <NuxtLink :to="{path:`/article/${title}`}" class="text-blue-500">連結</NuxtLink>
+          <a :href="link" target="_blank" class="text-blue-500"
+            >連結</a
+          >
         </div>
       </li>
     </ul>
@@ -45,7 +47,7 @@
 const lists = shallowRef([]);
 let types = ref(null);
 const category = ref("All");
-const  arraySet  = useArraySet()
+const arraySet = useArraySet();
 
 onMounted(async () => {
   lists.value = await $fetch("/api/article");

@@ -4,14 +4,14 @@
       <h2 class="mb-6 text-3xl font-bold">近期文章:</h2>
       <ul>
         <li
-          v-for="{ type, title } in articles.slice(0, 7)"
+          v-for="{ type, title, link } in articles.slice(-5).reverse()"
           :key="title"
           class="border-b py-4"
         >
           <h3 class="mb-2 text-xl md:text-2xl">{{ title }}</h3>
           <p class="mb-3">類別: {{ type }}</p>
-          <NuxtLink :to="{ path: `/article/${title}` }" class="text-blue-500"
-            >閱讀更多</NuxtLink
+          <a :href="link" target="_blank" class="text-blue-500"
+            >閱讀更多</a
           >
         </li>
       </ul>
