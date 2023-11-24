@@ -1053,5 +1053,11 @@ console.log(store.$global.id) // &#x27;globalStore&#x27;</code></pre></div></det
       link: "https://everlasting-hydrangea-e83.notion.site/Git-6d50bed9bfc54988a5c68729e0d515d8?pvs=4",
       article: "",
     },
+    {
+      type: "JavaScript",
+      title: "TypeScript 基礎",
+      link: "https://everlasting-hydrangea-e83.notion.site/TypeScript-4677d6e71eec4288a4565731891dabd0?pvs=4",
+      article: "",
+    }
   ];
 });
