@@ -36,9 +36,7 @@
     <div class="wave relative py-10 dark:hidden">
       <img src="/ship-svgrepo-com.svg" alt="ship icon" class="absolute w-10" />
     </div>
-    <div
-      class="hidden justify-center border-t-2 bg-gray-800 py-4 text-xl dark:flex"
-    >
+    <div class="hidden justify-center border-t-2 py-4 text-xl dark:flex">
       <CssDoodle></CssDoodle>
     </div>
   </footer>
