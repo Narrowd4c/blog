@@ -1058,6 +1058,6 @@ console.log(store.$global.id) // &#x27;globalStore&#x27;</code></pre></div></det
       title: "TypeScript 基礎",
       link: "https://everlasting-hydrangea-e83.notion.site/TypeScript-4677d6e71eec4288a4565731891dabd0?pvs=4",
       article: "",
-    }
+    },
   ];
 });

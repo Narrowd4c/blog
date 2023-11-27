@@ -1,108 +1,114 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;800;900&family=Shadows+Into+Light&display=swap");
 @tailwind base;
 @layer base {
-body {
-  font-family: "Noto Sans TC", sans-serif;
-  @apply leading-normal;
-  & > #__nuxt {
-    @apply flex;
-    min-height: 100dvh;
-    @apply flex-col;
-    @apply overflow-hidden;
-    @apply relative;
-    @apply dark:mode;
-    transition: color 1s ease-in-out;
-    &::after{
-      content: '';
-      @apply -z-10;
-      @apply rounded-full;
-      @apply absolute;
-      @apply bg-gray-800;
-      @apply w-0;
-      @apply h-0;
-      @apply right-0;
-      @apply scale-0;
-      transition: transform 2s ease-in-out, height 0.5s ease-in-out, width 0.5s ease-in-out;
+  body {
+    font-family: "Noto Sans TC", sans-serif;
+    @apply leading-normal;
+    & > #__nuxt {
+      @apply flex;
+      min-height: 100dvh;
+      @apply flex-col;
+      @apply overflow-hidden;
+      @apply relative;
+      @apply dark:mode;
+      transition: color 1s ease-in-out;
+      &::after {
+        content: "";
+        @apply -z-10;
+        @apply rounded-full;
+        @apply absolute;
+        @apply bg-gray-800;
+        @apply w-0;
+        @apply h-0;
+        @apply right-0;
+        @apply scale-0;
+        transition:
+          transform 2s ease-in-out,
+          height 0.5s ease-in-out,
+          width 0.5s ease-in-out;
+      }
     }
   }
-}
-:is(a, button):hover {
-  @apply text-blue-400;
-  @apply cursor-pointer;
-}
+  :is(a, button):hover {
+    @apply text-blue-400;
+    @apply cursor-pointer;
+  }
 }
 @tailwind components;
 @layer components {
-.wave {
-  background:
-    radial-gradient(
-        50px at 50% -23.5px,
-        #0000 99%,
-        rgba(28, 114, 235, 0.6) 100%
-      )
-      0px/76px 100% repeat-x,
-    radial-gradient(50px at 50% -23.5px, #0000 99%, rgb(28, 114, 235) 100%)
-      6px 3px/45px 100% repeat-x;
-  animation: wave 80s ease-in-out infinite;
-  & > img {
-    animation:
-      position 40s ease-in-out infinite,
-      wave2 2s ease-in-out infinite alternate;
+  .wave {
+    background:
+      radial-gradient(
+          50px at 50% -23.5px,
+          #0000 99%,
+          rgba(28, 114, 235, 0.6) 100%
+        )
+        0px/76px 100% repeat-x,
+      radial-gradient(50px at 50% -23.5px, #0000 99%, rgb(28, 114, 235) 100%)
+        6px 3px/45px 100% repeat-x;
+    animation: wave 80s ease-in-out infinite;
+    & > img {
+      animation:
+        position 40s ease-in-out infinite,
+        wave2 2s ease-in-out infinite alternate;
+    }
+    @keyframes position {
+      0% {
+        left: -1vw;
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        left: calc(100% - 3vw);
+        opacity: 0;
+      }
+    }
+    @keyframes wave2 {
+      0% {
+        top: 0px;
+      }
+      100% {
+        top: 5px;
+      }
+    }
+    @keyframes wave {
+      0% {
+        background-position:
+          50% 0px,
+          -49% 0px;
+      }
+      50% {
+        background-position:
+          25% 3px,
+          20% 0px;
+      }
+      100% {
+        background-position:
+          -50% 0px,
+          49% 0px;
+      }
+    }
   }
-  @keyframes position {
-    0% {
-      left: -1vw;
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    100% {
-      left: calc(100% - 3vw);
-      opacity: 0;
-    }
-  }
-  @keyframes wave2 {
-    0% {
-      top: 0px;
-    }
-    100% {
-      top: 5px;
-    }
-  }
-  @keyframes wave {
-    0% {
-      background-position:
-        50% 0px,
-        -49% 0px;
-    }
-    50% {
-      background-position:
-        25% 3px,
-        20% 0px;
-    }
-    100% {
-      background-position:
-        -50% 0px,
-        49% 0px;
-    }
-  }
-}
 }
 
 @tailwind utilities;
-@layer utilities {  
-.mode{
-  @apply text-gray-100;
-  transition: color 0.25s ease-in-out;
-  &:after{
-    width: 50px;
-  height: 50px;
-  transform: scale(100);
-  transition: transform 2s ease-in-out, height 0.5s ease-in-out, width 0.5s ease-in-out;
+@layer utilities {
+  .mode {
+    @apply text-gray-100;
+    transition: color 0.25s ease-in-out;
+    &:after {
+      width: 50px;
+      height: 50px;
+      transform: scale(100);
+      transition:
+        transform 2s ease-in-out,
+        height 0.5s ease-in-out,
+        width 0.5s ease-in-out;
+    }
   }
-}
 }
