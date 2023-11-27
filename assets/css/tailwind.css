@@ -21,9 +21,9 @@
         @apply w-0;
         @apply h-0;
         @apply right-0;
-        @apply scale-0;
+        transform: scale(0);
         transition:
-          transform 2s ease-in-out,
+          transform 1s ease-in-out,
           height 0.5s ease-in-out,
           width 0.5s ease-in-out;
       }
@@ -100,13 +100,13 @@
 @layer utilities {
   .mode {
     @apply text-gray-100;
-    transition: color 0.25s ease-in-out;
+    transition: color 1s ease-in-out;
     &:after {
       width: 50px;
       height: 50px;
       transform: scale(100);
       transition:
-        transform 2s ease-in-out,
+        transform 1s ease-in-out,
         height 0.5s ease-in-out,
         width 0.5s ease-in-out;
     }
