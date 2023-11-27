@@ -5,24 +5,24 @@ body {
   font-family: "Noto Sans TC", sans-serif;
   @apply leading-normal;
   & > #__nuxt {
-    display: flex;
+    @apply flex;
     min-height: 100dvh;
-    flex-direction: column;
+    @apply flex-col;
     @apply overflow-hidden;
     @apply relative;
-    @apply dark:text-white;
+    @apply dark:mode;
+    transition: color 1s ease-in-out;
     &::after{
-      @apply dark:mode;
       content: '';
-      z-index: -1;
+      @apply -z-10;
       @apply rounded-full;
       @apply absolute;
       @apply bg-gray-800;
-      width: 0px;
-      height: 0px;
-      right:0;
-      transform: scale(0);
-      transition: transform 0.5s ease-in-out, height 0.5s ease-in-out, width 0.5s ease-in-out;
+      @apply w-0;
+      @apply h-0;
+      @apply right-0;
+      @apply scale-0;
+      transition: transform 2s ease-in-out, height 0.5s ease-in-out, width 0.5s ease-in-out;
     }
   }
 }
@@ -96,9 +96,13 @@ body {
 @tailwind utilities;
 @layer utilities {  
 .mode{
-  width: 50px;
+  @apply text-gray-100;
+  transition: color 0.25s ease-in-out;
+  &:after{
+    width: 50px;
   height: 50px;
   transform: scale(100);
-  transition: transform 0.5s ease-in-out;
+  transition: transform 2s ease-in-out, height 0.5s ease-in-out, width 0.5s ease-in-out;
+  }
 }
 }
