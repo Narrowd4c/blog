@@ -25,5 +25,11 @@ export default defineEventHandler((event) => {
       link: "https://clipdrop.co/",
       type: "其他",
     },
+    {
+      name: "Checklist Design",
+      about: "網頁設計清單",
+      link: "https://www.checklist.design/",
+      type: "其他",
+    },
   ];
 });
