@@ -34,7 +34,7 @@
               class="h-6 w-6"
           /></a>
           <a
-            href="https://everlasting-hydrangea-e83.notion.site/2ebe5748ab40470cb53936a42feb876b?pvs=4"
+            href="https://flashy-dahlia-c75.notion.site/c90358059f5e499ebff3a76fb30759a8?pvs=4"
             target="_blank"
             rel="noopener"
             ><img
